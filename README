@@ -8,35 +8,3 @@
                       \/_/   \/_/ \/___/  \/___/   \/_/\/_/
 
                              E-learning System
-
-----------------------------------------------------------------------
-
-  FEATURES
-
-    o Website
-    o Cross platform Native App (Dart+Flutter)
-    o Student Registration
-    o Online classes & remote teaching
-    o Student Enquiries
-    o Student Attendance
-    o Announcements
-    o Examination Management
-    o Staff Management
-    o Timetabe Generation
-    o Cloud Based
-    o Books/ Library
-    o Parent Accounts
-    o Parents can check
-      o Attendance
-      o Homework
-      o Exam results
-      o Performance analytics
-      o Email notifications
-
-  DATABASES
-   o Students.sqlite
-   o Teachers.sqlite
-   o Admins.sqlite
-   o Events.sqlite
-   o Library.sqlite
-   o Groups.sqlite

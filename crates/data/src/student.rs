@@ -34,6 +34,8 @@ pub struct Student {
     pub gender: Gender,
     /// Last time the student logged into Frosh
     pub last_login: DateTime<Utc>,
+    /// Date when student joined institution
+    pub joined: DateTime<Utc>,
     /// Data type schema version
     pub version: u32,
 }

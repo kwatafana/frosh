@@ -23,6 +23,8 @@ date: last update 29-01-2024
 - [ ] Cloud Based
 - [ ] Books/ Library
 - [ ] Parent Accounts
+- [ ] Giving Credential (Degrees)
+- [ ] Sport management
 - Parents can check
   - [ ] Attendance
   - [ ] Homework
@@ -38,21 +40,22 @@ date: last update 29-01-2024
 
 #### Students Schema Version 0
 
-| Field              | Description                                                                    | Type            |
-|--------------------|--------------------------------------------------------------------------------|-----------------|
-| __username__       | Students account username                                                      | `String`        |
-| __firstname__      | Students first name                                                            | `String`        |
-| __middlenames__    | Students middle names                                                          | `String`        |
-| __lastname__       | Students last name                                                             | `String`        |
-| __email__          | Students email address                                                         | `String`        |
-| __bio__            | Students bio                                                                   | `String`        |
-| __courses__        | Courses, it is u32 because it represents the course ID in the courses database | `Vec<u32>`      |
-| __student_number__ | Student's number                                                               | `String`        |
-| __national_id__    | Student national ID number                                                     | `String`        |
-| __mobile__         | Students mobile phone number                                                   | `String`        |
-| __gender__         | Students gender                                                                | `Gender`        |
-| __last_login__     | Last time the student logged into Frosh                                        | `DateTime<Utc>` |
-| __version__        | Data type schema version                                                       | `u32`           |
+| Field              | Description                                                                    | Type             |
+|--------------------|--------------------------------------------------------------------------------|------------------|
+| __username__       | Students account username                                                      | `String`         |
+| __firstname__      | Students first name                                                            | `String`         |
+| __middlenames__    | Students middle names                                                          | `Option<String>` |
+| __lastname__       | Students last name                                                             | `String`         |
+| __email__          | Students email address                                                         | `String`         |
+| __bio__            | Students bio                                                                   | `Option<String>` |
+| __courses__        | Courses, it is u32 because it represents the course ID in the courses database | `Vec<u32>`       |
+| __student_number__ | Student's number                                                               | `Option<String>` |
+| __national_id__    | Student national ID number                                                     | `Option<String>` |
+| __mobile__         | Students mobile phone number                                                   | `Option<String>` |
+| __gender__         | Students gender                                                                | `Gender`         |
+| __last_login__     | Last time the student logged into Frosh                                        | `DateTime<Utc>`  |
+| __joined__         | Date when student joined institution                                           | `DateTime<Utc>`  |
+| __version__        | Data type schema version                                                       | `u32`            |
 
 ---
 

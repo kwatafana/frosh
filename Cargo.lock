@@ -106,6 +106,7 @@ name = "froshdata"
 version = "0.1.0"
 dependencies = [
  "chrono",
+ "kommon",
  "rusqlite",
  "serde",
 ]
@@ -114,6 +115,8 @@ dependencies = [
 name = "froshdb"
 version = "0.1.0"
 dependencies = [
+ "froshdata",
+ "kommon",
  "rusqlite",
  "serde",
 ]
@@ -167,6 +170,14 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "9a1d36f1235bc969acba30b7f5990b864423a6068a10f7c90ae8f0112e3a59d1"
 dependencies = [
  "wasm-bindgen",
+]
+
+[[package]]
+name = "kommon"
+version = "0.1.0"
+dependencies = [
+ "rusqlite",
+ "serde",
 ]
 
 [[package]]

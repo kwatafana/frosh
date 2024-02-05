@@ -9,6 +9,8 @@ documentation = "https://kwatafana.org/frosh"
 
 [workspace.dependencies]
 
+kommon = {path = "../kommon", features = ["serde", "rusqlite"]}
+
 ############################## [Data] ################################
 serde = { version = "1.0.196", features = ["derive"] } # A generic serialization/deserialization framework
 serde_json = {version = "1.0.113"}

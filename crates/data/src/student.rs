@@ -5,7 +5,7 @@ use kommon::Gender;
 use serde::{Deserialize, Serialize};
 
 /// Student data type
-#[derive(PartialEq, Debug, Serialize, Deserialize)]
+#[derive(PartialEq, Debug, Serialize, Deserialize, Clone)]
 pub struct Student {
     /// Students account username
     pub username: String,

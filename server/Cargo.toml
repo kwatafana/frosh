@@ -1,0 +1,20 @@
+[package]
+name = "frosh_kontrollers"
+version = "0.1.0"
+edition = "2021"
+authors = ["Jackson G. Kaindume <cy6erlion@protonmail.com>"]
+description = "E-learning System"
+documentation = "https://kwatafana.org/frosh"
+
+[features]
+student = []
+
+[dependencies]
+kong = { path = "../../kong/krates/kong"}
+kong_kontrollers = { path = "../../kong/krates/kontrollers", features = ["login"]}
+kommon = {path = "../../kommon", features = ["serde", "rusqlite"]}
+serde = { version = "1.0.196", features = ["derive"] }
+serde_json = {version = "1.0.113"}
+toml = "0.8.8"
+rusqlite = { version = "0.31.0", features = ["bundled", "chrono"]}
+chrono = { version = "0.4.33", features = ["serde"]}

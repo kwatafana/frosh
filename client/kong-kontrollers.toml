@@ -1,0 +1,7 @@
+src_dir = "/home/kaindume/26/kong/krates/klient/js"
+out_js_file = "./.www/js/kong.js"
+accounts = true
+login = true
+blog = true
+newsletter = true
+contact = true

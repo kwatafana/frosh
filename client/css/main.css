@@ -1,0 +1,40 @@
+a, .text-primary, a:visited{
+    color: cyan !important;
+}
+
+.btn.btn-primary, .btn-primary:active, .btn.btn-primary:hover,
+.btn.btn-primary:focus, .btn.btn-primary:hover
+{
+    background-color: cyan;
+    color: #222d31 !important;
+    border-color: cyan;
+}
+
+header{
+    background-color: #222d31;
+}
+
+
+#INFO_BOX{
+    position: fixed;
+    bottom: 5px;
+    right: 5px;
+    width: 35vw;
+    display: none;
+}
+
+.kontainer{
+    padding-top: 3em !important;
+}
+
+.form-input:focus{
+    border-color: teal;
+}
+
+.toast.toast-primary{
+    background-color: teal;
+}
+
+.blog-card{
+    margin: .2em;
+}

@@ -1,0 +1,600 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+CAUTION: Do not modify this file unless you know what you are doing.
+ Unexpected results may occur if the code is changed deliberately.
+-->
+<dbmodel pgmodeler-ver="1.1.1" use-changelog="false" max-obj-count="19"
+	 last-position="0,1282" last-zoom="0.75" scene-rect="0,0,1892.16,2528.92"
+	 default-schema="public" default-owner="postgres"
+	 layers="Default layer"
+	 active-layers="0"
+	 layer-name-colors="#000000"
+	 layer-rect-colors="#b4b4b4"
+	 show-layer-names="false" show-layer-rects="false">
+<database name="frosh" is-template="false" allow-conns="true">
+</database>
+
+<schema name="public" layers="0" fill-color="#e1e1e1" name-color="#000000" sql-disabled="true">
+</schema>
+
+<tag name="Junction">
+	<style id="table-body" colors="#474f56,#474f56,#595e61"/>
+	<style id="table-ext-body" colors="#474f56,#474f56,#595e61"/>
+	<style id="table-name" colors="#000000"/>
+	<style id="table-schema-name" colors="#000000"/>
+	<style id="table-title" colors="#55ff00,#55ff00,#55ff00"/>
+	<style id="table-toggler-body" colors="#474f56,#474f56,#595e61"/>
+	<style id="table-toggler-btns" colors="#3275b0,#6ec0ff,#77cbff"/>
+</tag>
+<usertype name="gender" configuration="enumeration">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<enumeration label="Male"/>
+	<enumeration label="Female"/>
+	<enumeration label="Other"/>
+</usertype>
+
+<table name="students" layers="0" collapse-mode="2" pagination="true" attribs-page="0" ext-attribs-page="0" max-obj-count="20" z-value="0">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="60" y="2120"/>
+	<column name="id" not-null="true">
+		<type name="serial" length="0"/>
+	</column>
+	<column name="username" not-null="true">
+		<type name="varchar" length="15"/>
+	</column>
+	<column name="firstname" not-null="true">
+		<type name="varchar" length="50"/>
+	</column>
+	<column name="middlenames" not-null="true">
+		<type name="varchar" length="50" dimension="1"/>
+	</column>
+	<column name="lastname" not-null="true">
+		<type name="varchar" length="50"/>
+	</column>
+	<column name="email" not-null="true">
+		<type name="varchar" length="320"/>
+	</column>
+	<column name="photo">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="bio">
+		<type name="varchar" length="200"/>
+	</column>
+	<column name="dob">
+		<type name="date" length="0"/>
+	</column>
+	<column name="student_number">
+		<type name="varchar" length="100"/>
+	</column>
+	<column name="national_id">
+		<type name="varchar" length="100"/>
+	</column>
+	<column name="physical_address">
+		<type name="varchar" length="200"/>
+	</column>
+	<column name="mobile">
+		<type name="varchar" length="15"/>
+	</column>
+	<column name="gender" not-null="true">
+		<type name="public.gender" length="0"/>
+	</column>
+	<column name="last_login">
+		<type name="date" length="0"/>
+	</column>
+	<column name="joined" not-null="true">
+		<type name="date" length="0"/>
+	</column>
+	<column name="version" not-null="true">
+		<type name="smallint" length="0"/>
+	</column>
+	<constraint name="primary_key" type="pk-constr" table="public.students">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+	<constraint name="id_must_be_unique" type="uq-constr" table="public.students">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+	<constraint name="username_must_be_unique" type="uq-constr" table="public.students">
+		<columns names="username" ref-type="src-columns"/>
+	</constraint>
+	<constraint name="emails_must_be_unique" type="uq-constr" table="public.students">
+		<columns names="email" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="courses" layers="0" collapse-mode="2" pagination="true" attribs-page="0" ext-attribs-page="0" max-obj-count="15" z-value="0">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="60" y="60"/>
+	<column name="id" not-null="true">
+		<type name="serial" length="0"/>
+	</column>
+	<column name="name" not-null="true">
+		<type name="varchar" length="50"/>
+	</column>
+	<column name="description" not-null="true">
+		<type name="varchar" length="500"/>
+	</column>
+	<column name="topics" not-null="true">
+		<type name="varchar" length="50" dimension="1"/>
+	</column>
+	<column name="goals" not-null="true">
+		<type name="varchar" length="50" dimension="1"/>
+	</column>
+	<column name="textbooks" not-null="true">
+		<type name="varchar" length="100" dimension="1"/>
+	</column>
+	<column name="grading">
+		<type name="varchar" length="300"/>
+	</column>
+	<column name="calendar">
+		<type name="json" length="0"/>
+	</column>
+	<column name="level">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="price">
+		<type name="money" length="0"/>
+	</column>
+	<column name="duration">
+		<type name="interval" length="0"/>
+	</column>
+	<column name="added" not-null="true">
+		<type name="date" length="0"/>
+	</column>
+	<column name="version" not-null="true">
+		<type name="smallint" length="0"/>
+	</column>
+	<constraint name="courses_primary_key" type="pk-constr" table="public.courses">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+	<constraint name="id_mus_be_unique" type="uq-constr" table="public.courses">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+	<constraint name="course_name_should_be_unique" type="uq-constr" table="public.courses">
+		<columns names="name" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="level" layers="0" collapse-mode="2" pagination="true" attribs-page="0" ext-attribs-page="0" max-obj-count="2" z-value="0">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="600" y="120"/>
+	<column name="id" not-null="true">
+		<type name="serial" length="0"/>
+	</column>
+	<constraint name="id_is_primary_key" type="pk-constr" table="public.level">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+	<constraint name="id_is_unique" type="uq-constr" table="public.level">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="faculty" layers="0" collapse-mode="2" max-obj-count="2" z-value="0">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="1360" y="120"/>
+	<column name="id" not-null="true">
+		<type name="serial" length="0"/>
+	</column>
+	<constraint name="faculty_primary_key" type="pk-constr" table="public.faculty">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+	<constraint name="faculty_id_is_unique" type="uq-constr" table="public.faculty">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="facultyJunction" layers="0" collapse-mode="2" pagination="true" attribs-page="0" ext-attribs-page="0" max-obj-count="4" z-value="0">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<tag name="Junction"/>
+	<position x="660" y="320"/>
+	<column name="id" not-null="true">
+		<type name="serial" length="0"/>
+	</column>
+	<column name="course" not-null="true">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="faculty" not-null="true">
+		<type name="integer" length="0"/>
+	</column>
+	<constraint name="course_faculty_id_is_primary_key" type="pk-constr" table="public.&quot;facultyJunction&quot;">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+	<constraint name="course_faculty_id_is_unique" type="uq-constr" table="public.&quot;facultyJunction&quot;">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="prerequisites" layers="0" collapse-mode="2" max-obj-count="2" z-value="0">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="1400" y="320"/>
+	<column name="id" not-null="true">
+		<type name="serial" length="0"/>
+	</column>
+	<constraint name="id_is_primary_key_11" type="pk-constr" table="public.prerequisites">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+	<constraint name="id_is_unique_10" type="uq-constr" table="public.prerequisites">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="prerequisitesJunction" layers="0" collapse-mode="2" max-obj-count="4" z-value="0">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<tag name="Junction"/>
+	<position x="700" y="600"/>
+	<column name="id" not-null="true">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="course" not-null="true">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="prerequisite" not-null="true">
+		<type name="integer" length="0"/>
+	</column>
+	<constraint name="id_is_primary_key_10" type="pk-constr" table="public.&quot;prerequisitesJunction&quot;">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+	<constraint name="id_is_unique_9" type="uq-constr" table="public.&quot;prerequisitesJunction&quot;">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="exercises" layers="0" collapse-mode="2" max-obj-count="2" z-value="0">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="1460" y="520"/>
+	<column name="id" not-null="true">
+		<type name="serial" length="0"/>
+	</column>
+	<constraint name="id_is_primary_key_9" type="pk-constr" table="public.exercises">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+	<constraint name="id_is_unique_8" type="uq-constr" table="public.exercises">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="exercisesJunction" layers="0" collapse-mode="2" max-obj-count="6" z-value="0">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<tag name="Junction"/>
+	<position x="760" y="880"/>
+	<column name="id" not-null="true">
+		<type name="serial" length="0"/>
+	</column>
+	<column name="course" not-null="true">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="exercise" not-null="true">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="module" not-null="true">
+		<type name="integer" length="0"/>
+	</column>
+	<constraint name="id_is_primary_key_8" type="pk-constr" table="public.&quot;exercisesJunction&quot;">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+	<constraint name="id_is_unique_7" type="uq-constr" table="public.&quot;exercisesJunction&quot;">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="modules" layers="0" collapse-mode="2" max-obj-count="2" z-value="0">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="1500" y="700"/>
+	<column name="id" not-null="true">
+		<type name="serial" length="0"/>
+	</column>
+	<constraint name="id_is_primary_key_7" type="pk-constr" table="public.modules">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+	<constraint name="id_is_unique_6" type="uq-constr" table="public.modules">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="modulesJunction" layers="0" collapse-mode="2" max-obj-count="4" z-value="0">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<tag name="Junction"/>
+	<position x="800" y="1220"/>
+	<column name="id" not-null="true">
+		<type name="serial" length="0"/>
+	</column>
+	<column name="course" not-null="true">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="module" not-null="true">
+		<type name="integer" length="0"/>
+	</column>
+	<constraint name="id_is_primary_key_6" type="pk-constr" table="public.&quot;modulesJunction&quot;">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+	<constraint name="id_is_unique_5" type="uq-constr" table="public.&quot;modulesJunction&quot;">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="exams" layers="0" collapse-mode="2" max-obj-count="1" z-value="0">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="1560" y="900"/>
+	<column name="id" not-null="true">
+		<type name="serial" length="0"/>
+	</column>
+	<constraint name="id_is_primary_key_5" type="pk-constr" table="public.exams">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="examsJunction" layers="0" collapse-mode="2" max-obj-count="4" z-value="0">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<tag name="Junction"/>
+	<position x="860" y="1500"/>
+	<column name="id" not-null="true">
+		<type name="serial" length="0"/>
+	</column>
+	<column name="course" not-null="true">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="exam" not-null="true">
+		<type name="integer" length="0"/>
+	</column>
+	<constraint name="id_is_primary_key_4" type="pk-constr" table="public.&quot;examsJunction&quot;">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+	<constraint name="id_is_unique_4" type="uq-constr" table="public.&quot;examsJunction&quot;">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="library" layers="0" collapse-mode="2" max-obj-count="2" z-value="0">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="1600" y="1060"/>
+	<column name="id" not-null="true">
+		<type name="serial" length="0"/>
+	</column>
+	<constraint name="id_is_primary_key_3" type="pk-constr" table="public.library">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+	<constraint name="id_is_unique_3" type="uq-constr" table="public.library">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="libraryJunction" layers="0" collapse-mode="2" max-obj-count="4" z-value="0">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<tag name="Junction"/>
+	<position x="900" y="1780"/>
+	<column name="id" not-null="true">
+		<type name="serial" length="0"/>
+	</column>
+	<column name="course">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="library" not-null="true">
+		<type name="integer" length="0"/>
+	</column>
+	<constraint name="id_is_primary_key_2" type="pk-constr" table="public.&quot;libraryJunction&quot;">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+	<constraint name="id_is_unique_2" type="uq-constr" table="public.&quot;libraryJunction&quot;">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="student_photos" layers="0" collapse-mode="2" max-obj-count="7" z-value="0">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="560" y="2180"/>
+	<column name="id" not-null="true">
+		<type name="serial" length="0"/>
+	</column>
+	<column name="data" not-null="true">
+		<type name="bytea" length="0"/>
+	</column>
+	<column name="mime" not-null="true">
+		<type name="varchar" length="255"/>
+	</column>
+	<column name="filename">
+		<type name="varchar" length="255"/>
+	</column>
+	<column name="added" not-null="true">
+		<type name="date" length="0"/>
+	</column>
+	<column name="version" not-null="true">
+		<type name="smallint" length="0"/>
+	</column>
+	<constraint name="id_is_primary_key_1" type="pk-constr" table="public.student_photos">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+	<constraint name="id_is_unique_1" type="uq-constr" table="public.student_photos">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<constraint name="photo_is_foreign_key" type="fk-constr" comparison-type="MATCH SIMPLE"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="public.student_photos" table="public.students">
+	<columns names="photo" ref-type="src-columns"/>
+	<columns names="id" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="level_foreign_key" type="fk-constr" comparison-type="MATCH SIMPLE"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="public.level" table="public.courses">
+	<columns names="level" ref-type="src-columns"/>
+	<columns names="id" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="course_foreign_key" type="fk-constr" comparison-type="MATCH SIMPLE"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="public.courses" table="public.&quot;facultyJunction&quot;">
+	<columns names="id" ref-type="src-columns"/>
+	<columns names="id" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="faculty_foreign_key" type="fk-constr" comparison-type="MATCH SIMPLE"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="public.faculty" table="public.&quot;facultyJunction&quot;">
+	<columns names="id" ref-type="src-columns"/>
+	<columns names="id" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="course_is_foreign_key" type="fk-constr" comparison-type="MATCH SIMPLE"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="public.courses" table="public.&quot;prerequisitesJunction&quot;">
+	<columns names="course" ref-type="src-columns"/>
+	<columns names="id" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="prerequisite_is_foreign_key" type="fk-constr" comparison-type="MATCH SIMPLE"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="public.prerequisites" table="public.&quot;prerequisitesJunction&quot;">
+	<columns names="prerequisite" ref-type="src-columns"/>
+	<columns names="id" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="course_is_foreign_key" type="fk-constr" comparison-type="MATCH SIMPLE"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="public.courses" table="public.&quot;exercisesJunction&quot;">
+	<columns names="course" ref-type="src-columns"/>
+	<columns names="id" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="exercise_is_foreign_key" type="fk-constr" comparison-type="MATCH SIMPLE"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="public.exercises" table="public.&quot;exercisesJunction&quot;">
+	<columns names="exercise" ref-type="src-columns"/>
+	<columns names="id" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="module_is_foreign_key" type="fk-constr" comparison-type="MATCH SIMPLE"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="public.modules" table="public.&quot;exercisesJunction&quot;">
+	<columns names="module" ref-type="src-columns"/>
+	<columns names="id" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="course_is_foreign_key" type="fk-constr" comparison-type="MATCH SIMPLE"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="public.courses" table="public.&quot;modulesJunction&quot;">
+	<columns names="course" ref-type="src-columns"/>
+	<columns names="id" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="module_is_foreign_key" type="fk-constr" comparison-type="MATCH SIMPLE"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="public.modules" table="public.&quot;modulesJunction&quot;">
+	<columns names="module" ref-type="src-columns"/>
+	<columns names="id" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="course_is_foreign_key" type="fk-constr" comparison-type="MATCH SIMPLE"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="public.courses" table="public.&quot;examsJunction&quot;">
+	<columns names="course" ref-type="src-columns"/>
+	<columns names="id" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="exam_is_foreign_key" type="fk-constr" comparison-type="MATCH SIMPLE"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="public.exams" table="public.&quot;examsJunction&quot;">
+	<columns names="exam" ref-type="src-columns"/>
+	<columns names="id" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="course_is_foreign_key" type="fk-constr" comparison-type="MATCH SIMPLE"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="public.courses" table="public.&quot;libraryJunction&quot;">
+	<columns names="id" ref-type="src-columns"/>
+	<columns names="id" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="library_is_foreign_key" type="fk-constr" comparison-type="MATCH SIMPLE"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="public.library" table="public.&quot;libraryJunction&quot;">
+	<columns names="library" ref-type="src-columns"/>
+	<columns names="id" ref-type="dst-columns"/>
+</constraint>
+
+<relationship name="rel_courses_level" type="relfk" layers="0"
+	 src-table="public.courses"
+	 dst-table="public.level" reference-fk="level_foreign_key"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_course_faculty_courses" type="relfk" layers="0"
+	 src-table="public.&quot;facultyJunction&quot;"
+	 dst-table="public.courses" reference-fk="course_foreign_key"
+	 src-required="false" dst-required="true">
+	<label ref-type="name-label">
+		<position x="43.7632" y="21.147"/>
+	</label>
+</relationship>
+
+<relationship name="rel_course_faculty_faculty" type="relfk" layers="0"
+	 src-table="public.&quot;facultyJunction&quot;"
+	 dst-table="public.faculty" reference-fk="faculty_foreign_key"
+	 src-required="false" dst-required="true"/>
+
+<relationship name="rel_courses_prerequisites_courses" type="relfk" layers="0"
+	 src-table="public.&quot;prerequisitesJunction&quot;"
+	 dst-table="public.courses" reference-fk="course_is_foreign_key"
+	 src-required="false" dst-required="true"/>
+
+<relationship name="rel_courses_prerequisites_prerequisites" type="relfk" layers="0"
+	 src-table="public.&quot;prerequisitesJunction&quot;"
+	 dst-table="public.prerequisites" reference-fk="prerequisite_is_foreign_key"
+	 src-required="false" dst-required="true">
+	<label ref-type="name-label">
+		<position x="0" y="0"/>
+	</label>
+</relationship>
+
+<relationship name="&quot;rel_exercisesJunction_courses&quot;" type="relfk" layers="0"
+	 src-table="public.&quot;exercisesJunction&quot;"
+	 dst-table="public.courses" reference-fk="course_is_foreign_key"
+	 src-required="false" dst-required="true"/>
+
+<relationship name="&quot;rel_exercisesJunction_exercises&quot;" type="relfk" layers="0"
+	 src-table="public.&quot;exercisesJunction&quot;"
+	 dst-table="public.exercises" reference-fk="exercise_is_foreign_key"
+	 src-required="false" dst-required="true"/>
+
+<relationship name="&quot;rel_exercisesJunction_modules&quot;" type="relfk" layers="0"
+	 src-table="public.&quot;exercisesJunction&quot;"
+	 dst-table="public.modules" reference-fk="module_is_foreign_key"
+	 src-required="false" dst-required="true"/>
+
+<relationship name="&quot;rel_modulesJunction_courses&quot;" type="relfk" layers="0"
+	 src-table="public.&quot;modulesJunction&quot;"
+	 dst-table="public.courses" reference-fk="course_is_foreign_key"
+	 src-required="false" dst-required="true"/>
+
+<relationship name="&quot;rel_modulesJunction_modules&quot;" type="relfk" layers="0"
+	 src-table="public.&quot;modulesJunction&quot;"
+	 dst-table="public.modules" reference-fk="module_is_foreign_key"
+	 src-required="false" dst-required="true"/>
+
+<relationship name="&quot;rel_examsJunction_courses&quot;" type="relfk" layers="0"
+	 src-table="public.&quot;examsJunction&quot;"
+	 dst-table="public.courses" reference-fk="course_is_foreign_key"
+	 src-required="false" dst-required="true"/>
+
+<relationship name="&quot;rel_examsJunction_exams&quot;" type="relfk" layers="0"
+	 src-table="public.&quot;examsJunction&quot;"
+	 dst-table="public.exams" reference-fk="exam_is_foreign_key"
+	 src-required="false" dst-required="true"/>
+
+<relationship name="&quot;rel_libraryJunction_courses&quot;" type="relfk" layers="0"
+	 src-table="public.&quot;libraryJunction&quot;"
+	 dst-table="public.courses" reference-fk="course_is_foreign_key"
+	 src-required="false" dst-required="true"/>
+
+<relationship name="&quot;rel_libraryJunction_library&quot;" type="relfk" layers="0"
+	 src-table="public.&quot;libraryJunction&quot;"
+	 dst-table="public.library" reference-fk="library_is_foreign_key"
+	 src-required="false" dst-required="true"/>
+
+<relationship name="rel_students_student_photos" type="relfk" layers="0"
+	 src-table="public.students"
+	 dst-table="public.student_photos" reference-fk="photo_is_foreign_key"
+	 src-required="false" dst-required="false"/>
+
+</dbmodel>

@@ -1,3 +1,4 @@
 *~
 client/.www
 target/
+server/example-config.toml

@@ -7,6 +7,11 @@
 -- Database creation must be performed outside a multi lined SQL file. 
 -- These commands were put in this file only as a convenience.
 -- 
+-- object: frosh | type: DATABASE --
+-- DROP DATABASE IF EXISTS frosh;
+CREATE DATABASE frosh;
+-- ddl-end --
+
 
 -- object: public.gender | type: TYPE --
 -- DROP TYPE IF EXISTS public.gender CASCADE;
@@ -55,15 +60,18 @@ CREATE TABLE public.courses (
 	goals varchar(50)[] NOT NULL,
 	textbooks varchar(100)[] NOT NULL,
 	grading varchar(300),
-	calendar json,
+	calendar json NOT NULL,
 	level integer,
-	price money,
-	duration interval,
+	price numeric,
+	duration varchar(100),
+	code varchar(30) NOT NULL,
 	added date NOT NULL,
+	last_updated date NOT NULL,
 	version smallint NOT NULL,
 	CONSTRAINT courses_primary_key PRIMARY KEY (id),
 	CONSTRAINT id_mus_be_unique UNIQUE (id),
-	CONSTRAINT course_name_should_be_unique UNIQUE (name)
+	CONSTRAINT course_name_should_be_unique UNIQUE (name),
+	CONSTRAINT course_code_is_unique UNIQUE (code)
 );
 -- ddl-end --
 ALTER TABLE public.courses OWNER TO postgres;

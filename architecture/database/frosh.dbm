@@ -4,7 +4,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
  Unexpected results may occur if the code is changed deliberately.
 -->
 <dbmodel pgmodeler-ver="1.1.1" use-changelog="false" max-obj-count="19"
-	 last-position="0,1282" last-zoom="0.75" scene-rect="0,0,1892.16,2528.92"
+	 last-position="0,1214" last-zoom="0.75" scene-rect="0,0,1905.33,2528.92"
 	 default-schema="public" default-owner="postgres"
 	 layers="Default layer"
 	 active-layers="0"
@@ -103,7 +103,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	</constraint>
 </table>
 
-<table name="courses" layers="0" collapse-mode="2" pagination="true" attribs-page="0" ext-attribs-page="0" max-obj-count="15" z-value="0">
+<table name="courses" layers="0" collapse-mode="2" pagination="true" attribs-page="1" ext-attribs-page="0" max-obj-count="16" z-value="0">
 	<schema name="public"/>
 	<role name="postgres"/>
 	<position x="60" y="60"/>
@@ -128,7 +128,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	<column name="grading">
 		<type name="varchar" length="300"/>
 	</column>
-	<column name="calendar">
+	<column name="calendar" not-null="true">
 		<type name="json" length="0"/>
 	</column>
 	<column name="level">
@@ -138,9 +138,12 @@ CAUTION: Do not modify this file unless you know what you are doing.
 		<type name="money" length="0"/>
 	</column>
 	<column name="duration">
-		<type name="interval" length="0"/>
+		<type name="varchar" length="100"/>
 	</column>
 	<column name="added" not-null="true">
+		<type name="date" length="0"/>
+	</column>
+	<column name="last_updated" not-null="true">
 		<type name="date" length="0"/>
 	</column>
 	<column name="version" not-null="true">

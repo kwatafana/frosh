@@ -2,3 +2,4 @@
 client/.www
 target/
 server/example-config.toml
+server/example-config.toml

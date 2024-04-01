@@ -1,29 +1,39 @@
+use super::ID;
 use chrono::{DateTime, Utc};
 use kommon::Gender;
 use serde::{Deserialize, Serialize};
 
+pub use student_photos::StudentPhotos;
+pub mod input;
+mod student_photos;
+
 /// Student data type
 #[derive(PartialEq, Debug, Serialize, Deserialize, Clone)]
 pub struct Student {
+    /// Student unique identifier
+    pub id: i64,
     /// Students account username
     pub username: String,
     /// Students first name
     pub firstname: String,
     /// Students middle names
-    pub middlenames: Option<String>,
+    pub middlenames: Option<Vec<String>>,
     /// Students last name
     pub lastname: String,
     /// Students email address
     pub email: String,
+    /// Photo of the student
+    pub photo: Option<ID>,
     /// Short bio of student
     pub bio: Option<String>,
-    /// Courses, it is u32 because it represents the course ID in
-    /// the courses database
-    pub courses: Vec<u32>,
+    /// Student's date of birth
+    pub dob: Option<DateTime<Utc>>,
     /// Student's number
     pub student_number: Option<String>,
     /// Student national ID number
     pub national_id: Option<String>,
+    /// Student physical address
+    pub physical_address: Option<String>,
     /// Students mobile phone number
     pub mobile: Option<String>,
     #[serde(deserialize_with = "Gender::deserialize")]
@@ -35,5 +45,5 @@ pub struct Student {
     /// Date when student joined institution
     pub joined: DateTime<Utc>,
     /// Data type schema version
-    pub version: u32,
+    pub version: i16,
 }

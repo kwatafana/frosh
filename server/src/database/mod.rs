@@ -1,8 +1,11 @@
-//! Frosh -- students database management
+//! Frosh -- database management
+mod courses;
 mod error;
-pub mod student_photos;
+mod student_photos;
+
 pub use error::DatabaseError;
 use postgres::{Client, NoTls};
+pub use student_photos::StudentPhotosSql;
 
 /// Students database management
 pub struct FroshDatabase {

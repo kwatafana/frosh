@@ -1,5 +1,5 @@
 use super::DatabaseError;
-use crate::data::student::StudentPhotos;
+use crate::data::StudentPhotos;
 use postgres::Client;
 
 /// SQL queries for the student_photos database table
@@ -22,8 +22,7 @@ impl StudentPhotosSql {
                     &student_photos.version,
                 ],
             )
-            .unwrap();
-        //            .map_err(|_| DatabaseError::Connection)?;
+            .map_err(|_| DatabaseError::SQL)?;
         Ok(())
     }
 }
@@ -31,7 +30,7 @@ impl StudentPhotosSql {
 #[cfg(test)]
 mod test {
     use crate::config::FroshConfig;
-    use crate::data::student::StudentPhotos;
+    use crate::data::StudentPhotos;
     use crate::database::FroshDatabase;
 
     #[test]
